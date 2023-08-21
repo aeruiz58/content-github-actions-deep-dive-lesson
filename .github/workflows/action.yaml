@@ -94,8 +94,8 @@ jobs:
         run: |
             aws lambda create-function --function-name test-function \
               --code S3Bucket=agustin12,S3Key=${{ github.sha }}.zip \
-              --handler lambda_function.lambda_handler --runtime python3.11 
-              --role arn:aws:iam::258076216385:role/agus \
+              --handler lambda_function.lambda_handler --runtime python3.11 \
+              --role arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/agus \
               --publish
       - name: Wait 30 seconds
         run: sleep 30
